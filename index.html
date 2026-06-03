@@ -342,9 +342,29 @@ body {
 /* ===== STEPS LAYOUT ===== */
 .step-tabs {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 8px;
   margin-bottom: 28px;
+}
+
+.step-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.step-row--last {
+  grid-template-columns: repeat(3, 1fr);
+  /* จำกัดไม่ให้ขยายเต็มแถว */
+  max-width: 75%;
+}
+
+@media (max-width: 640px) {
+  .step-row,
+  .step-row--last {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 100%;
+  }
 }
 
 .step-tab {
@@ -940,17 +960,26 @@ body::before{
     </div>
 
     <div class="step-tabs">
-      <button class="step-tab active" onclick="showStep(0)"><span class="tab-num">01</span>ศึกษาปัญหา</button>
-      <button class="step-tab" onclick="showStep(1)"><span class="tab-num">02</span>ออกแบบระบบ</button>
-      <button class="step-tab" onclick="showStep(2)"><span class="tab-num">03</span>จัดหาอุปกรณ์</button>
-      <button class="step-tab" onclick="showStep(3)"><span class="tab-num">04</span>ตำแหน่งติดตั้ง</button>
-      <button class="step-tab" onclick="showStep(4)"><span class="tab-num">05</span>ต่อวงจร</button>
-      <button class="step-tab" onclick="showStep(5)"><span class="tab-num">06</span>เขียนโปรแกรม</button>
-      <button class="step-tab" onclick="showStep(6)"><span class="tab-num">07</span>ประเมินความเสี่ยง</button>
-      <button class="step-tab" onclick="showStep(7)"><span class="tab-num">08</span>แจ้งเตือน</button>
-      <button class="step-tab" onclick="showStep(8)"><span class="tab-num">09</span>ทดลองใช้</button>
-      <button class="step-tab" onclick="showStep(9)"><span class="tab-num">10</span>วิเคราะห์ผล</button>
-      <button class="step-tab" onclick="showStep(10)"><span class="tab-num">11</span>สรุปและพัฒนา</button>
+      <!-- แถว 1 -->
+      <div class="step-row">
+        <button class="step-tab active" onclick="showStep(0)"><span class="tab-num">01</span>ศึกษาปัญหา</button>
+        <button class="step-tab" onclick="showStep(1)"><span class="tab-num">02</span>ออกแบบระบบ</button>
+        <button class="step-tab" onclick="showStep(2)"><span class="tab-num">03</span>จัดหาอุปกรณ์</button>
+        <button class="step-tab" onclick="showStep(3)"><span class="tab-num">04</span>ตำแหน่งติดตั้ง</button>
+      </div>
+      <!-- แถว 2 -->
+      <div class="step-row">
+        <button class="step-tab" onclick="showStep(4)"><span class="tab-num">05</span>ต่อวงจร</button>
+        <button class="step-tab" onclick="showStep(5)"><span class="tab-num">06</span>เขียนโปรแกรม</button>
+        <button class="step-tab" onclick="showStep(6)"><span class="tab-num">07</span>ประเมินความเสี่ยง</button>
+        <button class="step-tab" onclick="showStep(7)"><span class="tab-num">08</span>แจ้งเตือน</button>
+      </div>
+      <!-- แถว 3 -->
+      <div class="step-row step-row--last">
+        <button class="step-tab" onclick="showStep(8)"><span class="tab-num">09</span>ทดลองใช้</button>
+        <button class="step-tab" onclick="showStep(9)"><span class="tab-num">10</span>วิเคราะห์ผล</button>
+        <button class="step-tab" onclick="showStep(10)"><span class="tab-num">11</span>สรุปและพัฒนา</button>
+      </div>
     </div>
 
     <!-- STEP 01 -->
